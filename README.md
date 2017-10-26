@@ -1,3 +1,5 @@
+# axios请求超时,设置重新请求的完美解决方法
+
 自从使用Vue2之后，就使用官方推荐的axios的插件来调用API，在使用过程中，如果服务器或者网络不稳定掉包了, 你们该如何处理呢? 下面我给你们分享一下我的经历。
 
 
@@ -182,3 +184,5 @@ axios.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
 
 
 如有更好的建议，请告诉我，谢谢。
+
+
