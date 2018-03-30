@@ -131,9 +131,9 @@ axios.interceptors.response.use(function(response){
 
 
 
-#### 完成的解决方法
+#### 完美的解决方法
 
-以AOP编程方式，我需要的是一个 超时重新请求的全局功能， 要在axios.Interceptors下功夫，在github的axios的issue找了别人的一些解决方法，终于找到了一个完成解决方案，就是下面这个。
+以AOP编程方式，我需要的是一个 超时重新请求的全局功能， 要在axios.Interceptors下功夫，在github的axios的issue找了别人的一些解决方法，终于找到了一个完美解决方案，就是下面这个。
 
 https://github.com/axios/axios/issues/164#issuecomment-327837467
 
