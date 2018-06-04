@@ -9,10 +9,10 @@ Vue.config.productionTip = false
 
 
 //请求超时时限 我设置500毫秒
-axios.defaults.timeout =  500;
+axios.defaults.timeout =  200;
 
 //请求次数
-axios.defaults.retry = 4;
+axios.defaults.retry = 2;
 
 //请求的间隙
 axios.defaults.retryDelay = 1000;
@@ -35,25 +35,37 @@ axios.interceptors.response.use(function(response){
 				//window.location.reload();
 				return Promise.reject(error);
     }
-    
-		// Increase the retry count
-		config.__retryCount += 1;
 
-		// Create new promise to handle exponential backoff
-		var backoff = new Promise(function(resolve) {
-				setTimeout(function() {
-						//console.log('resolve');
-						resolve();
-				}, config.retryDelay || 1);
-		});
+		if(confirm('要重新请求吗?')){
 
-		return backoff.then(function() {
+
+			// Increase the retry count
+			config.__retryCount += 1;
+
+			// Create new promise to handle exponential backoff
+			var backoff = new Promise(function(resolve) {
+					setTimeout(function() {
+							//console.log('resolve');
+							resolve();
+					}, config.retryDelay || 1);
+			});
+
+			return backoff.then(function() {
 				return axios(config);
-		});
+			});
+
+
+		}else{
+			return {
+				code: 1,
+				msg: '你取消了!'
+			}
+		}
+
 	}else{
 
     return Promise.reject(error);
-    
+
 	}
 });
 

@@ -5,12 +5,15 @@
 export default {
 	data() {
 		return {
-			
+
 		}
 	},
 	created(){
-		this.$axios.get('https://www.facebook.com').then(function(res){
+		this.$axios.get('https://cnodejs.org/api/v1/topics').then(function(res){
 			//dosomething
+
+			console.log(res);
+
 		}).catch(function(res){
 			//dosomething
 		});
